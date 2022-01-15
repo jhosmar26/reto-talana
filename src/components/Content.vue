@@ -3,7 +3,7 @@
     <div>
       {{categoryName}}
     </div>
-    <div class="mb-10">Home> Products {{categoryName ? '>' + categoryName : ""}}</div>
+    <div class="mb-10"><span @click="home()">Home></span><span @click="home()"> Products</span> {{categoryName ? '>' + categoryName : ""}}</div>
     <div class="flex flex-wrap justify-center gap-10">
       <div v-for="product,key in productsToShow" :key="key">
         <Card :element="product"/>
@@ -20,10 +20,18 @@ export default {
     return{
       products: [],
       productsToShow: [],
-      paginatorIndex: 0,
     }
   },
-  props:["categoryName"],
+  props:["changeCategory", "categoryName", "categoryId"],
+  watch: {
+    categoryId() {
+      if(this.categoryId === 0){
+        this.productsToShow = this.products;
+      }else{
+        this.filterProducts(this.products);
+      }
+    }
+  },
   components:{
     Card
   },
@@ -39,6 +47,14 @@ export default {
           this.productsToShow = response.data;
         })
     },
+    filterProducts(products) {
+      this.productsToShow = products.filter(product => {
+        return product.category.id === this.categoryId
+      });
+    },
+    home(){
+      this.changeCategory(0, "");
+    }
   }
 }
 </script>

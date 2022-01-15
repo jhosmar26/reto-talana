@@ -2,7 +2,7 @@
   <div>
     <div class=" text-2xl">Categorías</div>
     <ul>
-      <li @click="handleClick(category.name)" v-for="category,key in categories" :key="key">
+      <li @click="handleClick(category.id, category.name)" v-for="category,key in categories" :key="key">
         {{category.name}}
       </li>
     </ul>
@@ -15,7 +15,7 @@ export default {
       categories: [],
     }
   },
-  props:["changeCategoryName"],
+  props:["changeCategory"],
   mounted() {
     this.getCategories()
   },
@@ -27,8 +27,8 @@ export default {
           this.categories = response.data
         })
     },
-    handleClick(name) {
-      this.changeCategoryName(name)
+    handleClick(id, name) {
+      this.changeCategory(id, name)
     }
   }
 }

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="grid-custom-cols bg-[#fff000]">
-      <div class="text-3xl text-center self-center">Logo</div>
+      <div @click="changeCategory(0, '')" class="text-3xl text-center self-center">Logo</div>
       <div class=""><Nav/></div>
-      <div><Sidebar :changeCategoryName="changeCategoryName"/></div>
-      <div><Content :categoryName="categoryName"/></div>
+      <div><Sidebar :changeCategory="changeCategory"/></div>
+      <div><Content :changeCategory="changeCategory" :categoryName="categoryName" :categoryId="categoryId"/></div>
     </div>
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
   data(){
     return{
       categoryName: "",
+      categoryId: null,
     }
   },
   components: {
@@ -27,8 +28,9 @@ export default {
     Content
   },
   methods:{
-    changeCategoryName(category) {
-      this.categoryName = category
+    changeCategory(id, name) {
+      this.categoryId = id;
+      this.categoryName = name;
     }
   }
 }
