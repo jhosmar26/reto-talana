@@ -3,8 +3,8 @@
     <div class="grid-custom-cols bg-[#fff000]">
       <div class="text-3xl text-center self-center">Logo</div>
       <div class=""><Nav/></div>
-      <div><Sidebar/></div>
-      <div><Content/></div>
+      <div><Sidebar :changeCategoryName="changeCategoryName"/></div>
+      <div><Content :categoryName="categoryName"/></div>
     </div>
   </div>
 </template>
@@ -16,10 +16,20 @@ import Content from "./components/Content.vue";
 
 export default {
   name: 'App',
+  data(){
+    return{
+      categoryName: "",
+    }
+  },
   components: {
     Nav,
     Sidebar,
     Content
+  },
+  methods:{
+    changeCategoryName(category) {
+      this.categoryName = category
+    }
   }
 }
 </script>

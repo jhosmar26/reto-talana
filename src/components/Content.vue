@@ -1,8 +1,10 @@
 <template>
-  <div class="">
-    <div>Categoría</div>
-    <div>breadcrumb</div>
-    <div class="flex flex-wrap">
+  <div class="p-10">
+    <div>
+      {{categoryName}}
+    </div>
+    <div class="mb-10">Home> Products {{categoryName ? '>' + categoryName : ""}}</div>
+    <div class="flex flex-wrap justify-center gap-10">
       <div v-for="product,key in productsToShow" :key="key">
         <Card :element="product"/>
       </div>
@@ -21,6 +23,7 @@ export default {
       paginatorIndex: 0,
     }
   },
+  props:["categoryName"],
   components:{
     Card
   },
