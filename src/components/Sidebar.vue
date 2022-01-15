@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class=" text-2xl">Categorías</div>
+  <div class="p-8">
+    <div class="mb-5 text-2xl">Categorías</div>
     <ul>
-      <li @click="handleClick(category.id, category.name)" v-for="category,key in categories" :key="key">
+      <li class="cursor-pointer hover:text-black" @click="handleClick(category.id, category.name)" v-for="category,key in categories" :key="key">
         {{category.name}}
       </li>
     </ul>

@@ -3,7 +3,11 @@
     <div>
       {{categoryName}}
     </div>
-    <div class="mb-10"><span @click="home()">Home></span><span @click="home()"> Products</span> {{categoryName ? '>' + categoryName : ""}}</div>
+    <div class="mb-10">
+      <span class="cursor-pointer" @click="home()">Home></span>
+      <span class="cursor-pointer" @click="home()"> Products</span>
+      {{categoryName ? '>' + categoryName : ""}}
+    </div>
     <div class="flex flex-wrap justify-center gap-10">
       <div v-for="product,key in productsToShow" :key="key">
         <Card :element="product"/>

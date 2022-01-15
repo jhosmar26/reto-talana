@@ -1,10 +1,18 @@
 <template>
   <div id="app">
     <div class="grid-custom-cols bg-[#fff000]">
-      <div @click="changeCategory(0, '')" class="text-3xl text-center self-center">Logo</div>
-      <div class=""><Nav/></div>
-      <div><Sidebar :changeCategory="changeCategory"/></div>
-      <div><Content :changeCategory="changeCategory" :categoryName="categoryName" :categoryId="categoryId"/></div>
+      <div @click="changeCategory(0, '')" class="h-full text-3xl flex justify-center items-center border-b border-r cursor-pointer">
+        Logo
+      </div>
+      <div class="border-b h-full">
+        <Nav />
+      </div>
+      <div class="border-r">
+        <Sidebar :changeCategory="changeCategory" />
+      </div>
+      <div>
+        <Content :changeCategory="changeCategory" :categoryName="categoryName" :categoryId="categoryId" />
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +28,7 @@ export default {
     return{
       categoryName: "",
       categoryId: null,
+      productsToBuy: [],
     }
   },
   components: {
